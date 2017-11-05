@@ -38,9 +38,10 @@ FS = fs.img
 
 all : objs progs fs
 
-fs :
-	$(MKFS) $(FS) cat echo forktest grep init kill \
-		ln ls mkdir rm sh stressfs usertests wc zombie
+fs : $(FS)
+
+$(FS) : $(PROGS)
+	$(MKFS) $(FS) $(PROGS)
 
 progs : $(PROGS)
 

@@ -16,4 +16,5 @@ initcode/initcode.out
 initcode/initcode
 tests/xv6.img
 tools/mkfs
+_build/
 
