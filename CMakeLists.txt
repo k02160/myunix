@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 2.8)
 
+if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+   message(FATAL_ERROR "In-source builds are not allowed.")
+   endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+
+project(myunix)
+
 get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
 
 if ("${LIB64}" STREQUAL "TRUE")
