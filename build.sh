@@ -14,7 +14,7 @@ CONFIG_OPTIONS="${CONFIG_OPTIONS} -DCMAKE_LINKER=i386-jos-elf-ld"
 function find_cmake()
 {
 	declare -a CMDS
-	CMDS=("cmake" "cmake3")
+	CMDS=("cmake3" "cmake")
 	CMAKE=""
 
 	for cmd in "${CMDS[@]}"; do
