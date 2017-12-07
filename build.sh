@@ -11,13 +11,27 @@ CONFIG_OPTIONS="-DCMAKE_INSTALL_PREFIX=/usr"
 #CONFIG_OPTIONS="${CONFIG_OPTIONS} -DCMAKE_BUILD_TYPE=Debug"
 CONFIG_OPTIONS="${CONFIG_OPTIONS} -DCMAKE_LINKER=i386-jos-elf-ld"
 
+function find_cmake()
+{
+	declare -a CMDS
+	CMDS=("cmake" "cmake3")
+	CMAKE=""
+
+	for cmd in "${CMDS[@]}"; do
+		CMAKE=`which $cmd`
+		if [ ! -z "$CMAKE" ] ; then
+			break
+		fi
+	done
+}
+
 function configure()
 {
 	pushd ${ROOT}
 	rm -rf ${BUILDDIR}
 	mkdir -p ${BUILDDIR}
 	pushd ${BUILDDIR}
-	cmake3 -G "Unix Makefiles" ${CONFIG_OPTIONS} ../
+	$CMAKE -G "Unix Makefiles" ${CONFIG_OPTIONS} ../
 	popd
 	popd
 		
@@ -78,6 +92,10 @@ declare -A OPTIONS
 
 VERSION=1.0.0
 PROGRAM=$(basename $0)
+
+find_cmake
+
+echo "DEBUG : cmake is $CMAKE"
 
 for OPT in "$@"
 do
