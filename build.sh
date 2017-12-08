@@ -18,7 +18,7 @@ function find_cmake()
 	CMAKE=""
 
 	for cmd in "${CMDS[@]}"; do
-		CMAKE=`which $cmd`
+		CMAKE=`which $cmd 2> /dev/null`
 		if [ ! -z "$CMAKE" ] ; then
 			break
 		fi

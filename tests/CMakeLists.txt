@@ -9,7 +9,7 @@ set(BOOTBLOCK ../bootblock/bootblock)
 set(KERNEL ../kernel/kernel.elf)
 set(FS ../usr/fs.img)
 
-set(QEMU /usr/bin/qemu-system-i386)
+set(QEMU qemu-system-i386)
 
 add_custom_target(image ALL
 	/usr/bin/rm -f ${IMAGE}
