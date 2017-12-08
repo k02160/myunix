@@ -19,7 +19,7 @@ add_custom_target(image ALL
 )
 
 add_custom_target(qemu
-	${QEMU} -serial mon:stdio -net none -hdb ${FS} ${IMAGE} -smp 2 -m 512
+	${QEMU} -nographic -serial mon:stdio -net none -hdb ${FS} ${IMAGE} -smp 2 -m 512
 )
 
 
