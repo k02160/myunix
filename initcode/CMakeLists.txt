@@ -41,8 +41,8 @@ add_custom_command(
 )
 
 add_custom_command(
-	TARGET initcode.o
+	TARGET initcode.out
 	POST_BUILD
-	COMMAND ${OBJDUMP} -S initcode.o > initcode.asm
+	COMMAND ${OBJDUMP} -S ${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/initcode.out.dir/initcode.S.o > initcode.asm
 )
 
