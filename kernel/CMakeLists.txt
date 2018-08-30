@@ -24,9 +24,7 @@ set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS) # remove -rdynamic option
 set(LDFLAGS "-m elf_i386 -nodefaultlibs -T ${CMAKE_SOURCE_DIR}/kernel/kernel.ld")
 
 set(CMAKE_EXE_LINKER_FLAGS "${LDFLAGS}")
-set(CMAKE_C_LINK_EXECUTABLE  "<CMAKE_LINKER> \
-<LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES> \
--b binary ../initcode/initcode ../bootblockother/entryother"
+set(CMAKE_C_LINK_EXECUTABLE  "<CMAKE_LINKER> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES> -b binary ../initcode/initcode ../bootblockother/entryother"
 )
 
 include_directories(

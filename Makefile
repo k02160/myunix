@@ -3,7 +3,7 @@ TARGET   = i386-jos-elf
 CONFIG_OPTIONS = -DCMAKE_INSTALL_PREFIX=/usr
 CONFIG_OPTIONS += -DCMAKE_LINKER=$(TARGET)-ld
 
-CMAKE = cmake3
+CMAKE = cmake
 
 all : build
 

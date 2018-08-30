@@ -24,8 +24,7 @@ set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS) # remove -rdynamic option
 
 set(LDFLAGS "-m elf_i386 -nodefaultlibs -N -e start -Ttext 0")
 set(CMAKE_EXE_LINKER_FLAGS "${LDFLAGS}")
-set(CMAKE_ASM_LINK_EXECUTABLE  "<CMAKE_LINKER> \
-<LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>"
+set(CMAKE_ASM_LINK_EXECUTABLE  "<CMAKE_LINKER> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>"
 )
 
 include_directories(
