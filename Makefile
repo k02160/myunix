@@ -16,6 +16,7 @@ config :
 		$(CMAKE) -G "Unix Makefiles" $(CONFIG_OPTIONS) ../
 
 build :
+	if [ ! -e $(BUILDDIR) ]; then $(MAKE) config; fi
 	cd $(BUILDDIR) && make VERBOSE=1
 
 test :

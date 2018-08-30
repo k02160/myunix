@@ -1,14 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(initcode C ASM)
+project(initcode C)
 
-set(CMAKE_SYSTEM_NAME Generic)
-
-set(CMAKE_C_COMPILER   /usr/bin/i386-jos-elf-gcc)
-set(CMAKE_ASM_COMPILER i386-jos-elf-gcc)
-set(CMAKE_LINKER "i386-jos-elf-ld")
-set(OBJCOPY i386-jos-elf-objcopy)
-set(OBJDUMP i386-jos-elf-objdump)
+set(CMAKE_LINKER i386-jos-elf-ld)
 
 set(AFLAGS "")
 set(AFLAGS "${AFLAGS} -fno-pic -static -fno-builtin")

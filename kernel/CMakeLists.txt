@@ -2,11 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(kernel C ASM)
 
-set(CMAKE_SYSTEM_NAME Generic)
-
-set(CMAKE_C_COMPILER   i386-jos-elf-gcc)
-set(CMAKE_ASM_COMPILER i386-jos-elf-gcc)
-set(CMAKE_LINKER "i386-jos-elf-ld")
+set(CMAKE_LINKER i386-jos-elf-ld)
 
 set(CFLAGS "")
 set(CFLAGS "${CFLAGS} -fno-pic -static")
