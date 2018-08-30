@@ -4,7 +4,10 @@ if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
   message(FATAL_ERROR "In-source builds are not allowed.")
 endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
 
-project(myunix)
+# disable compiler check
+set(CMAKE_C_COMPILER_WORKS 1)
+set(CMAKE_CXX_COMPILER_WORKS 1)
+project(myunix C)
 
 get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
 
@@ -13,6 +16,7 @@ if ("${LIB64}" STREQUAL "TRUE")
 else()
 	set(LIBSUFFIX "")
 endif()
+
 
 add_subdirectory(tools    ${CMAKE_CURRENT_BINARY_DIR}/tools)
 add_subdirectory(initcode ${CMAKE_CURRENT_BINARY_DIR}/initcode)
