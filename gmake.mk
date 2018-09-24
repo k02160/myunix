@@ -1,3 +1,5 @@
+include mk/target.mk
+
 all :
 	$(MAKE) -C tools $@
 	$(MAKE) -C initcode  $@
@@ -18,4 +20,6 @@ clean :
 
 qemu :
 	$(MAKE) -C tests $@
+
+.EXPORT_ALL_VARIABLES :
 

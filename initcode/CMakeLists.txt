@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(initcode C)
+project(initcode ASM)
 
 set(CMAKE_LINKER i386-jos-elf-ld)
 

@@ -1,8 +1,8 @@
-TARGET = i386-jos-elf
-CC = $(TARGET)-gcc
-LD = $(TARGET)-ld
-OBJDUMP = $(TARGET)-objdump
-OBJCOPY = $(TARGET)-objcopy
+#TARGET = i386-jos-elf
+#CC = $(TARGET)-gcc
+#LD = $(TARGET)-ld
+#OBJDUMP = $(TARGET)-objdump
+#OBJCOPY = $(TARGET)-objcopy
 
 AFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing \
 	-Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding -fno-common \

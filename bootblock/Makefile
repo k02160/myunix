@@ -1,13 +1,11 @@
-TARGET = i386-jos-elf
-CC = $(TARGET)-gcc
-LD = $(TARGET)-ld
-OBJDUMP = $(TARGET)-objdump
-OBJCOPY = $(TARGET)-objcopy
+include ../mk/target.mk
 
-CFLAGS = -fno-builtin -fno-pic -m32 -nostdinc \
- -I../include
+CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 \
+		 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer \
+		 -fno-stack-protector -fno-pic  \
+		 -I../include
 
-LDFLAGS = -m elf_i386 -nodefaultlibs -N -e start -Ttext 0x7C00
+LDFLAGS = -m elf_i386 -N -e start -Ttext 0x7C00
 
 ASMS = bootasm.S
 SRCS = bootmain.c
@@ -22,10 +20,10 @@ objs : $(OBJS)
 binary : $(BINARY)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -O -c -o $@ $<
+	$(CC) $(CFLAGS) -O -nostdinc -c -o $@ $<
 
 %.o : %.S
-	$(CC) $(CFLAGS)    -c -o $@ $<
+	$(CC) $(CFLAGS)    -nostdinc -c -o $@ $<
 
 $(BINARY) :
 	$(LD) $(LDFLAGS) -o bootblock.o $(OBJS)

@@ -1,12 +1,12 @@
 .SUFFIXES:
 .SUFFIXES: .c .o
 
-TARGET = i386-jos-elf
-CC = $(TARGET)-gcc
-LD = $(TARGET)-ld
-AR = $(TARGET)-ar
-OBJDUMP = $(TARGET)-objdump
-OBJCOPY = $(TARGET)-objcopy
+#TARGET = i386-jos-elf
+#CC = $(TARGET)-gcc
+#LD = $(TARGET)-ld
+#AR = $(TARGET)-ar
+#OBJDUMP = $(TARGET)-objdump
+#OBJCOPY = $(TARGET)-objcopy
 
 MKFS = ../tools/mkfs
 
@@ -15,11 +15,11 @@ PROGS = cat echo forktest grep init kill ln ls mkdir rm sh \
 PROG_SRCS = $(PROGS:=.c)
 
 CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing \
-	-Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding \
-	-fno-common -nostdlib -I../include -gdwarf-2 -m32 -O0 \
-	-fno-stack-protector
+	-O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer \
+	-fno-stack-protector \
+	-I../include
 
-LDFLAGS = -m elf_i386 -nodefaultlibs -N -e main -Ttext 0
+LDFLAGS = -m elf_i386 -N -e main -Ttext 0
 
 ULIB_SRCS = ulib.c printf.c umalloc.c
 

@@ -5,6 +5,7 @@ kernel/vectors.S
 bootblock/bootblock
 bootblock/*.o
 bootblock/*.asm
+bootblock/*.d
 bootblockother/entryother
 bootblockother/*.o
 bootblockother/*.d

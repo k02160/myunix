@@ -1,18 +1,14 @@
-TARGET = i386-jos-elf
-CC = $(TARGET)-gcc
-LD = $(TARGET)-ld
-OBJDUMP = $(TARGET)-objdump
-OBJCOPY = $(TARGET)-objcopy
+include ../mk/target.mk
 
-CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing \
-	-Wall -MD -ggdb -fno-omit-frame-pointer -ffreestanding \
-	-fno-common -nostdlib -I../include -gdwarf-2 -m32 -O0 \
-	-fno-stack-protector
+CFLAGS = -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 \
+	-Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer \
+	-fno-stack-protector \
+	-I../include \
 
 SRCS = bio.c console.c exec.c file.c fs.c \
 	ide.c ioapic.c kalloc.c kbd.c lapic.c log.c \
-	main.c mp.c acpi.c picirq.c pipe.c proc.c spinlock.c \
-	string.c syscall.c sysfile.c sysproc.c timer.c \
+	main.c mp.c picirq.c pipe.c proc.c sleeplock.c spinlock.c \
+	string.c syscall.c sysfile.c sysproc.c \
 	trap.c uart.c vm.c
 
 VECTORS_S = vectors.S
@@ -21,7 +17,7 @@ ASMS = entry.S swtch.S trapasm.S $(VECTORS_S)
 
 AFLAGS = -gdwarf-2 -Wa,-divide -I../include -m32
 
-LDFLAGS = -m elf_i386 -nodefaultlibs -T kernel.ld
+LDFLAGS = -m elf_i386 -T kernel.ld
 
 OBJS = $(ASMS:.S=.o) $(SRCS:.c=.o)
 

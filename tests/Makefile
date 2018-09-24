@@ -23,7 +23,9 @@ $(IMAGE) :
 	dd if=$(KERNEL)    of=$(IMAGE) seek=1 conv=notrunc
 
 qemu :
-	$(QEMU) -serial mon:stdio -net none -hdb $(FS) $(IMAGE) \
+	$(QEMU) -nographic -serial mon:stdio \
+		-drive file=$(FS),index=1,media=disk,format=raw \
+		-drive file=$(IMAGE),index=0,media=disk,format=raw \
 		-smp 2 -m 512
 
 clean :
