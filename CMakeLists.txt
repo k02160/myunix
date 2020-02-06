@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 
+message("CMAKE_SOURCE_DIR is " ${CMAKE_SOURCE_DIR})
+message("CMAKE_BINARY_DIR is " ${CMAKE_BINARY_DIR})
+
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
   message(FATAL_ERROR "In-source builds are not allowed.")
 endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
